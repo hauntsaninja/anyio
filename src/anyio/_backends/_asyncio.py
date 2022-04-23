@@ -1563,12 +1563,12 @@ async def create_udp_socket(
         return ConnectedUDPSocket(transport, protocol)
 
 
-async def getaddrinfo(host: Union[bytearray, bytes, str], port: Union[str, int, None], *,
+async def getaddrinfo(host: Union[bytes, str], port: Union[str, int, None], *,
                       family: Union[int, AddressFamily] = 0, type: Union[int, SocketKind] = 0,
                       proto: int = 0, flags: int = 0) -> GetAddrInfoReturnType:
     # https://github.com/python/typeshed/pull/4304
     result = await get_running_loop().getaddrinfo(
-        host, port, family=family, type=type, proto=proto, flags=flags)  # type: ignore[arg-type]
+host, port, family=family, type=type, proto=proto, flags=flags)  # type: ignore[arg-type]
     return cast(GetAddrInfoReturnType, result)
 
 
